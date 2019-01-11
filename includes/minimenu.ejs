@@ -1,0 +1,25 @@
+<ul class="products__category">
+        <li class="products__catergory-title">Danh mục sản phẩm</li>
+        
+            <% routerInner.forEach(router=>{ %>
+            <li class="products__list-title">
+                <div class="products__link">
+                    <!-- click btn to active ... -->
+                    <i class="fas fa-plus openList"></i>
+                    <a clas href="<%= router.link %>"><%= router.title %></a>
+                </div>
+                <!--... this list -->
+                <ul class="products__other">
+                    <% router.moreProd.forEach(prod=>{ %>
+                        <li>
+                            <a href="/product/<%= productType %>/<%= prod._id %>?type=<%= productType %>"
+                                class="products__other-link">
+                                <%= prod.name %>
+                            </a> 
+                        </li>
+                    <% }) %>
+                </ul>
+            </li> 
+            <% }) %>
+        
+    </ul>

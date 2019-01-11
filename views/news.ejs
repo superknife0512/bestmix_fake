@@ -1,0 +1,49 @@
+<%- include('../includes/header') %>
+
+<br>
+<hr>
+<section class="news container">
+    <div class="news__heading-wrap">
+        <div class="news__heading">
+            <h2 class="news__heading--title">Tin tức</h2>   
+        </div>
+        <ul class="news__switches">
+            <li class="news__switch <%= type === 'company' ? 'active' : '' %>"><a href="/news?type=company" class="news__switch-link ">Tin nổi bật</a></li>
+            <li class="news__switch <%= type === 'hot' ? 'active' : '' %>"><a href="/news?type=hot" class="news__switch-link">Tin công ty</a></li>
+            <li class="news__switch <%= type === 'promotion' ? 'active' : '' %>"><a href="/news?type=promotion" class="news__switch-link">Tin khuyến mãi</a></li>
+        </ul>
+    </div>
+    <br>
+    <div class="news__first">
+        <img src="<%= hotImage %>"
+             alt="<%= firstNews.title %>" 
+             class="news__fImg">
+        <div class="news__first-info">
+            <h3 class="news__date"><%= firstNews.dateString %></h3>
+            <h2 class="news__title"><%= firstNews.title %></h2>
+            <p class="news__content"><%= firstNews.shortDes %></p>
+            <a href="/news/<%= firstNews.SEO %>.<%= firstNews._id %>" class="btn btn-warning btn-learn">Xem thêm</a>
+        </div>
+    </div>
+
+    <div class="news__section">
+
+        <% news.forEach(each=>{ %>
+
+        <firgure class="news__card">
+            <img src="<%= each.imageUrls[0] %>" alt="<%= each.title %>>" class="news__card-img">
+            <p class="news__card-date"><%= each.dateString %></p>
+            <h3 class="news__card-title"><%= each.title %></h3>
+            <p class="news__card-desc"><%= each.shortDes %> …</p>
+            <a href="/news/<%= each.SEO %>.<%= each._id %>" class="news__card-learn">Xem thêm</a>
+        </firgure>
+
+        <% }) %>
+
+    </div>
+</section>
+
+<%- include('../includes/popup') %>
+
+
+<%- include('../includes/footer') %>

@@ -1,0 +1,45 @@
+<section class="support">
+        <div class="support__btn-call">
+            <p>Vui lòng để lại lời nhắn</p>
+            <i class="fas fa-plus" id="openPop"></i>
+        </div>
+        <div class="support__popup" id="popup">
+            <div class="support__heading">
+                <p>Vui lòng để lại lời nhắn</p>
+                <i class="fas fa-minus" id="closePop"></i>
+            </div>
+            <div class="support__info">
+                <p>Nhân viên hỗ trợ khách hàng </p>
+                <p>(+84) 078 2759 831 </p>
+                <p>445 Hải Phòng, q. Thanh Khê, tp. Đà Nẵng </p>
+            </div>
+            <form action="/send" method="POST" class="support__form">
+                <div class="form-group">
+                    <label for="Name">Tên của bạn</label>
+                    <input class="form-control" type="text" name="name" placeholder="Tên của bạn">
+                </div>
+                <div class="form-group">
+                    <label for="Name">Email</label>
+                    <input class="form-control" type="email" name="email" placeholder="Email của bạn">
+                </div>
+                <div class="form-group">
+                    <label for="Name">Số điện thoại</label>
+                    <input class="form-control" type="number" name="phone" placeholder="Số điện thoại">
+                </div>
+                <div class="form-group">
+                    <label for="Name">Tin nhắn</label>
+                    <textarea class="form-control" name="msg" 
+                                cols="30" 
+                                rows="3"
+                                placeholder="Không quá 255 kí tự"></textarea>
+                </div>
+                <button type="submit" 
+                        class="btn btn-warning btn-lg support__btn">
+                        Để lại lời nhắn 
+                </button>
+            </form>
+        </div>
+    </section>
+    
+    <script src="../public/javascripts/support.js"></script>
+    

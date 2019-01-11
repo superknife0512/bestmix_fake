@@ -1,0 +1,132 @@
+.news{
+    &__heading-wrap{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+    }
+    &__heading{
+        
+        &--title{
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding-left: 3rem;
+            border-left: 3px solid $color-secondary
+        }
+    }
+    &__switches{
+        display: flex;
+        list-style: none;
+    }
+    &__switch{
+
+        &:not(:last-child){
+            margin-right: 1.5rem;
+            padding-right: 1.5rem;
+            border-right: solid 1px #cccccc;
+        }
+        
+    }
+    &__switch-link{
+        &:visited, &:link{
+            color: #333;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        &:hover{
+            color: $color-primary
+        }
+    }
+    // first news
+    &__first{
+        display: flex;
+    }
+    &__fImg{
+        height: 30rem;
+        width: 45%;
+        object-fit: cover;
+        object-position: center;
+    }
+    &__first-info{
+        background-color: #f3f3f3;
+        width: 100%;
+        padding: 2rem 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+    &__date{
+        font-size: 1.4rem;
+        font-weight: 100;
+        margin-bottom: 2rem;
+    }
+    &__title{
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1.7rem;
+        position: relative;
+        margin-bottom: 2rem; 
+        &::after{
+            content: '';
+            height: 3px;
+            width: 4rem;
+            background-color: $color-secondary;
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            z-index: 1000;
+        }       
+    }
+
+    .btn{
+        align-self: flex-end
+    }
+
+    &__content{
+
+    }
+
+    // news section
+    &__section{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(27rem, 32rem));
+        grid-column-gap: 6rem;
+        grid-row-gap: 4.5rem;
+        justify-content: center;
+        margin: 5rem 0;
+    }
+    &__card{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        &-img{
+            width: 100%;
+            height: 25rem;
+            object-fit: cover;
+            object-position: center;
+            margin-bottom: 1.5rem;
+        }
+        &-date{
+            position: absolute;
+            background-color: $color-secondary;
+            padding: .7rem 1.7rem;
+            top:0;
+            right: 0;
+        }
+        &-title{
+            text-transform: uppercase;
+            font-size: 1.6rem
+        }
+        &-desc{
+            color: #858585;
+        }
+        &-learn{
+            text-transform: uppercase;
+            color: rgb(83, 83, 83);
+
+            &:hover{
+                color: #333
+            }
+        }
+        
+    }
+}

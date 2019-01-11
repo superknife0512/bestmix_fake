@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="../public/javascripts/hovermenu.js"></script>
+</head>
+<body>
+        <header class="header">
+          <div class="container header__container">
+            <div class="header__logo">
+              <img src="images/logo.png" alt="logo" class="header__logo--img">
+            </div>
+            <div class="header__menu">
+              <div class="header__top">
+        
+                <ul class="header__top-item">
+                  <li>
+                    <i class="fab fa-facebook header__fb"></i>
+                    <a href="#">Đại lí</a>
+                  </li>
+                  <li>
+                    <a href="#">Tuyển dụng</a>
+                  </li>
+                  <li>
+                    <a href="#">Liên hệ</a>
+                  </li>
+                  <% if(isLogin) { %>
+                  <li>
+                    <a href="/admin/create">Create resource</a>
+                  </li>
+                  <li>
+                    <a href="/admin/pannel">Admin pannel</a>
+                  </li>
+                  <li>
+                    <a href="/admin/logout">Log out</a>
+                  </li>
+                  <% } else { %>
+                  <li>
+                    <a href="/admin/signup">Sign up</a>
+                  </li>
+                  <li>
+                    <a href="/admin/login">Login</a>
+                    
+                  </li>
+                  <% } %>
+                </ul>
+                <form class="header__search-data" action="/find" method="POST">
+                  <input type="text" class="header__search" placeholder="search" name="find">
+                  <button class="header__btn-search" type="submit">
+                    <i class="fas fa-search header__icon"></i>
+                  </button>
+                </form>
+              </div>
+              <div class="header__bottom">
+                <ul class="header__bottom-item">
+                  <li class="<%= path == '/' ? 'active' : '' %>">
+                    <a href="/">Trang chủ</a>
+                  </li>
+                  <li class="<%= path == '/about-bestmix' ? 'active' : '' %>">
+                    <a href="/about-bestmix">Về bestmix</a>
+                  </li>
+                  <li class="<%= path == '/product' ? 'active' : '' %>" id="product-menu">
+                    <a href="#">sản phẩm & Quy trình thi công </a>
+                  </li>
+                  <li class="<%= path == '/news' ? 'active' : '' %>">
+                    <a href="/news">Tin tức</a>
+                  </li>
+                  <li class="<%= path == '/construction' ? 'active' : '' %>">
+                    <a href="#">công trình</a>
+                  </li>
+                </ul>
+
+                <ul class="header__expand">
+                  <li>
+                    <a href="/product/concrete"><i class="fas fa-angle-right"></i>Phụ gia bê tông - xi măng</a>
+                  </li>
+                  <li>
+                    <a href="/product/shield"><i class="fas fa-angle-right"></i>Chống thấm và trám bít</a>
+                  </li>
+                  <li>
+                    <a href="/product/floor"><i class="fas fa-angle-right"></i>Nền sàn & chất phủ bề mặt</a>
+                  </li>
+                  <li>
+                    <a href="/product/bond"><i class="fas fa-angle-right"></i>Vữa rót- kết nối - sửa chữa - hoàn thiện</a>
+                  </li>
+                  <li>
+                    <a href="/product/other"><i class="fas fa-angle-right"></i>Sản phẩm cho các ngành sản xuất khác</a>
+                  </li>
+                  <li>
+                    <a href="/product/progress"><i class="fas fa-angle-right"></i>Quy trình thi công</a>
+                  </li>
+                </ul>
+              </div>
+          </div>
+          </div>
+        </header>

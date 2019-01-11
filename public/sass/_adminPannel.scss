@@ -1,0 +1,48 @@
+%btn{
+    font-size: 1.7rem;
+    text-transform: capitalize;
+    padding: .4rem 1.5rem;
+}
+
+.adminPan{
+    &__sub-heading{
+        color: $color-primary;
+        margin-bottom: 2rem;
+    }
+}
+
+.edit-news{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    grid-column-gap: 2rem;
+    grid-row-gap: 3rem;
+
+    margin-bottom: 4rem;
+
+    &__title{
+        font-size: 1.8rem;
+    }
+
+    &__text{
+        font-size: 1.5rem;
+    }
+
+    &__btn{
+        display: flex;  
+        flex-wrap: wrap;      
+        &--edit{
+            margin-right: 1.5rem;   
+            @extend %btn;
+        }
+        &--delete{
+            @extend %btn;
+        }
+    }
+
+    &__card{
+        height: 20rem;
+        width: 100%;
+        object-fit: cover;
+        object-position: center
+    }
+}

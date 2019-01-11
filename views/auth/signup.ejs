@@ -1,0 +1,40 @@
+<%- include('../../includes/header') %>
+    <br>
+    <hr>
+    <div class="container">
+        <h3 class="sign-up">Sign Up here</h3> 
+        <% if(error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div> 
+        <% } %>
+        <form action="/admin/signup" method="POST">
+            <div class="form-group">
+                <label for="email1">Email address</label>
+                <input type="email" 
+                        class="form-control" 
+                        id="email" 
+                        name="email" 
+                        placeholder="Enter email"
+                        value="<%= email ? email : '' %>">
+            </div>
+            <div class="form-group">
+                <label for="pass">Password</label>
+                <input type="password" 
+                        class="form-control" 
+                        id="password" name="password" 
+                        placeholder="Enter password"
+                        value="<%= password ? password : '' %>">
+            </div>
+            <div class="form-group">
+                <label for="confirmPass">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm password" name="confirmPassword" placeholder="Enter confirm passowrd">
+            </div>
+            <div class="form-group">
+                <label for="confirmPass" style="color: rgb(224, 75, 15)">Invited code</label>
+                <input type="text" class="form-control"  name="inviteCode" placeholder="Enter your code">
+            </div>
+            <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+        </form>
+    </div>
+<%- include('../../includes/footer') %>

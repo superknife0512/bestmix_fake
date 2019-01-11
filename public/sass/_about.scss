@@ -1,0 +1,42 @@
+.about{
+
+    &__title{
+        padding-left: 4rem;
+        border-left: 5px solid $color-secondary;
+        text-transform: uppercase;
+        margin-bottom: 3rem;
+    }
+
+    &__content{
+        font-size: 1.5rem;
+        p{
+
+        }
+
+        h5{
+            font-size: 1.6rem;
+            text-transform: uppercase;
+        }
+    }
+
+    &__list{
+        list-style: circle;
+        margin-bottom: 2rem;
+
+    }
+
+    &__item{
+        font-size: 1.5rem;
+    }
+
+    &__img{
+        margin-bottom: 2rem;
+    }
+
+    &__link{
+        font-size: 1.5rem;
+    }
+    
+
+
+}

@@ -1,0 +1,94 @@
+<%- include('../../includes/header') %>
+
+    <div class="container adminPan">
+
+        <div class="noctic__icon">
+            <a href="#" class="noctic__link">
+                <i class="fas fa-bell"></i>
+            </a>
+            <ul class="noctic__list">
+                <li>Your notification</li><hr>
+                <i class="fas fa-caret-right noctic__arr"></i>
+                <% messages.forEach(msg=>{ %>
+                <li class="noctic__item">
+                    <div class="noctic__wrapper">
+                        <a href="/admin/reply/<%= msg._id %>" class="noctic__item--link">
+                            <h4 class="noctic__item-title">
+                                <%= msg.name %>
+                            </h4>
+                            <p class="noctic__item-content"><%= msg.msg.split(' ').slice(0,14).join(' ') %>...</p>
+                        </a>
+                    </div>
+                    <div>
+                        <i class="fas fa-times noctic__item-icon"></i>
+                        <input type="hidden" name="msgId" value="<%= msg._id %>" class="msgId" >
+                    </div>
+                </li>
+                <% }) %>
+            </ul>
+        </div>
+
+        <br><br>
+        <h1 class="adminPan__heading">Admin pannel</h1>
+        <div class="btn-group">
+            <button class="btn btn-outline-warning" id="btn-news">News</button>
+            <button class="btn btn-outline-primary" id="btn-prod">Product</button>
+        </div>
+        <hr>
+        <div id="news-edit">
+
+            <h2 class="adminPan__sub-heading">News</h2>
+    
+            <section class="edit-news">
+    
+                <% news.forEach(each=>{ %>
+    
+                <div class="card" style="width: 100%;">
+                    <img class="card-img-top edit-news__card" src="<%= each.imageUrls[0] %>" alt="<%= each.title %>">
+                    <div class="card-body">
+                        <h5 class="card-title edit-news__title"><%= each.title %></h5>
+                        <p class="card-text edit-news__text"><%= each.shortDes %></p>
+                        <div class="edit-news__btn">
+                            <a href="/admin/create?edit=true&newsId=<%= each._id %>" class="btn btn-primary edit-news__btn--edit">Edit</a>
+                            <form action="/admin/delete" method="POST">
+                                <input type="hidden" name="newsId" value="<%= each._id %>">
+                                <button type="submit" class="btn btn-danger edit-news__btn--delete"> Delete </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+    
+                <% }) %>
+            </section>
+        </div>
+        <div id="product-edit">
+            <h2 class="adminPan__sub-heading">Products</h2>
+            <section class="edit-news">
+    
+                <% products.forEach(prod=>{ %>
+    
+                <div class="card" style="width: 100%;">
+                    <img class="card-img-top edit-news__card" src="<%= prod.imgUrl %>" alt="<%= prod.name %>">
+                    <div class="card-body">
+                        <h5 class="card-title edit-news__title"><%= prod.name %></h5>
+                        <p class="card-text edit-news__text"><%= prod.shortDes %></p>
+                        <div class="edit-news__btn">
+                            <a href="/admin/create?editProd=true&prodId=<%= prod._id %>" class="btn btn-primary edit-news__btn--edit">Edit</a>
+                            <form action="/admin/delete-prod" method="POST">
+                                <input type="hidden" name="productId" value="<%= prod._id %>">
+                                <button type="submit" class="btn btn-danger edit-news__btn--delete"> Delete </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+    
+                <% }) %>
+            </section>
+        </div>
+    </div>
+
+    <script src="../../public/javascripts/switchPannel.js"></script>
+    <script src="../../public/javascripts/notic.js"></script>
+    <script src="../../public/javascripts/asyncDelete.js"></script>
+
+<%- include('../../includes/footer')  %>

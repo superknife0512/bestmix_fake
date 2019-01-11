@@ -1,0 +1,23 @@
+<%- include('../includes/header') %>
+    <br>
+    <hr>
+    <div class="container">
+        <h1 class="about__title">Search Result</h1>
+        <h4>Tất cả kết quả khi tìm với <strong><%= search %></strong></h4>
+        <br>
+        <br>
+        <div class="product__display">
+                        
+                <% searchResults.forEach(prod=>{ %>
+                <div class="product__card">
+                    <img src="<%= prod.imgUrl %>" alt="<%= prod.name %>">
+                    <a href="/product/<%= prod.productType %>/<%= prod._id %>?type=<%= prod.productType %>">
+                        <h3 class="product__card-title"><%= prod.name %></h3>
+                    </a> 
+                    <p><%= prod.shortDes %></p>
+                </div>
+                <% }) %>
+            </div>
+    </div>
+
+<%- include('../includes/footer') %>

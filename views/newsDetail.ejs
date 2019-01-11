@@ -1,0 +1,45 @@
+<%- include('../includes/header') %>
+    <br>
+    <br>
+    <div class="article__devide container-fluid">
+        <div class="article__wrapper">
+            <div class="article__content">
+                <p class="news__date"><%= news.dateString %></p>
+                <h2 class="news__title"><%= news.title %></h2>
+                <br>
+                <ul>
+                    <% news.contentArr.forEach(ele => { %>
+                    <li> <%= ele %> </li>
+                    <% }) %>
+                </ul><br>
+
+                <% news.imageUrls.forEach(img=>{ %>
+                <img src="<%= img %>" alt="" class="article__img"><br>
+                <% }) %>
+            </div>
+            <div class="article__other-news">
+               <h3 class="article__other-heading">Các tin khác</h3>
+
+               <br>
+               <% allNews.forEach(news=>{ %>
+
+                <div class="article__card">
+                    <a href="/news/<%= news.SEO %>.<%= news._id %>">
+                        <img src="<%= news.imageUrls[1] %>" alt="<%= news.title %>" class="article__card-img" >
+                        <p class="article__card-date"><%= news.time.toISOString().split('T')[0] %></p>
+                        <h3 class="article__card-title"><%= news.title %></h3>
+                    </a>
+                    <hr>
+                </div>
+
+                <% }) %>
+
+            </div>
+
+        </div>
+    </div>
+
+<%- include('../includes/popup') %>
+
+
+<%- include('../includes/footer') %>

@@ -1,0 +1,33 @@
+li.active{
+    a:link, a:visited{
+        color: $color-primary;
+    }
+}
+
+li.sw-active{
+    color: $color-primary;
+}
+
+#product{
+    display: none;
+}
+
+#product-edit{
+    display: none;
+}
+
+ul.products__other{
+    display: none;
+}
+
+.activeBtn{
+    background-color: $color-secondary !important;
+}
+
+.reply__title{
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    padding-left: 4rem;
+    border-left: 4px solid $color-secondary;
+    margin-bottom: 2rem;
+}

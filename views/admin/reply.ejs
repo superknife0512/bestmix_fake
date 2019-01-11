@@ -1,0 +1,40 @@
+<%- include('../../includes/header') %>
+    <br>
+    <hr>
+    <div class="container">
+        <h3 class="reply__title">Client Message</h3>
+        <div class="alert alert-info">
+            <strong>Client name:</strong>  <%= message.name %> <br>
+        
+        
+            <strong>Client email:</strong>  <%= message.email %> <br>
+        
+        
+            <strong>Client phone number:</strong>  <%= message.phone %>
+        </div>     
+           
+        
+        <div class="alert alert-warning" role="alert">
+           <strong>Client msg:</strong>  <%= message.msg %>
+        </div>
+
+        <hr>
+        <h3 class="reply__title">Reply this message by email</h3>
+        <br>
+        <form action="/admin/reply" method="POST">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Admin name</label>
+                <input type="text" class="form-control" name="adminName" aria-describedby="emailHelp" placeholder="Enter name">
+            </div>           
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Message</label>
+                <textarea class="form-control" name="message" id="cax" cols="30" rows="3"></textarea>
+            </div>
+            <input type="hidden" name="msgId" value="<%= message._id %>">
+            <button type="submit" class="btn btn-info btn-lg">Reply now</button>
+        </form>
+    </div>
+    <br><br><br>
+
+<%- include('../../includes/footer') %>

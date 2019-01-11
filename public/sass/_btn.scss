@@ -1,0 +1,26 @@
+.btn-learn{
+    font-size: 2rem;
+    margin-top: 4rem;
+    align-self: center;
+    padding: .7rem 1.5rem;
+}
+
+.btn-group{
+    font-size: 2rem;
+    display: flex;
+    margin-top: 5rem;
+    
+    .btn{
+        margin-right: 2rem;
+        font-size: 2rem;
+    }
+}
+.btn-help{
+    margin-right: 2rem;
+    font-size: 2rem;
+}
+
+.btn-wrapper{
+    display: flex;
+    justify-content: space-between;
+}

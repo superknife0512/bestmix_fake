@@ -1,0 +1,27 @@
+<%- include('../includes/header') %>
+    <br>
+    <hr>
+        <section class="products">
+           <%- include('../includes/minimenu', {routerInner, productType}) %>
+            <div class="product-list">
+                <h1 class="product__category-title"><%= typeTitle %></h1>
+    
+                <div class="product__display">
+                    
+                    <% products.forEach(prod=>{ %>
+                    <div class="product__card">
+                        <img src="<%= prod.imgUrl %>" alt="<%= prod.name %>">
+                        <a href="/product/<%= productType %>/<%= prod._id %>?type=<%= productType %>">
+                            <h3 class="product__card-title"><%= prod.name %></h3>
+                        </a> 
+                        <p><%= prod.shortDes %></p>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+    
+        </section>
+<%- include('../includes/popup') %>
+
+        <script src="../public/javascripts/openProductList.js"></script>
+<%- include('../includes/footer') %>

@@ -1,0 +1,89 @@
+<%- include('../includes/header') %>
+
+<br>
+    <hr>
+    <section class="products">
+            <%- include('../includes/minimenu', {routerInner, productType}) %>
+
+            <div class="product-detail">
+                <h1 class="product__category-title"><%= typeTitle %></h1>
+                <div class="product-detail__display">
+                    <div class="product-detail__overview">
+                        <img src="<%= product.imgUrl %>" 
+                            alt="<%= product.name %>" 
+                            class="product-detail__img">
+                        <div class="product-detail__info">
+                            <h3><%= product.name %></h3>
+                            <p><%= product.shortDes %></p>
+                            <h3>ỨNG DỤNG</h3>
+                            <p><%= product.application %></p><br>
+                            <a href="/product/download/<%= product._id %>" 
+                                class="btn btn-info product-detail__btn"
+                                target="blank"> Tải về <%= product.name %> </a>
+                        </div>
+                    </div>
+                    <div class="product-detail__specific">
+                        <div class="product-detail__switches">
+                            <% switches.forEach((each, i)=> { %>
+
+                                <button class="product-detail__switch" 
+                                        id="btn-<%= id[i] %>"><%= each %></button>
+
+                            <% }) %>
+                        </div>
+                        <div class="product-detail__view">
+                            <ul class="product-detail__list" id="product-detail__view-<%= id[0] %>">
+                                <% product.desc.forEach(each=>{ %>
+                                    <li class="product-detail__content">
+                                        <i class="fas fa-square-full"></i><%= each %>
+                                    </li>
+                                <% }) %>
+                            </ul>
+
+                            <ul class="product-detail__list" id="product-detail__view-<%= id[1] %>">
+                                <% product.pros.forEach(each=>{ %>
+                                    <li class="product-detail__content">
+                                        <i class="fas fa-square-full"></i><%= each %>
+                                    </li>
+                                <% }) %>
+                            </ul>
+
+                            <ul class="product-detail__list" id="product-detail__view-<%= id[2] %>">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Đặt tính</th>
+                                            <th scope="col">Thông số</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <% specitiesTable.forEach(each=>{ %>
+                                              <tr>
+                                                <th scope="row"><%= each[0] %></th>
+                                                <td><%= each[1] %></td>                                                
+                                              </tr>
+                                            <% }) %>
+                                    </tbody>
+                                </table>
+                            </ul>
+
+                            <ul class="product-detail__list" id="product-detail__view-<%= id[3] %>">
+                                <% product.progress.forEach(each=>{ %>
+                                    <li class="product-detail__content">
+                                        <i class="fas fa-square-full"></i><%= each %>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+<%- include('../includes/popup') %>
+
+
+    <script src="../public/javascripts/openProductList.js"></script>
+    <script src="../public/javascripts/switchContent.js"></script>
+
+<%- include('../includes/footer') %>

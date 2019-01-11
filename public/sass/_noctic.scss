@@ -1,0 +1,105 @@
+
+.noctic{
+
+    &__icon{
+        height: 5rem;
+        width: 5rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 15.5rem;
+        right: 13rem;
+        background-color: rgba($color: $color-secondary, $alpha: .5);
+        z-index: 1500;
+    }
+
+    &__link{
+        &:link, &:visited{
+            text-decoration: none
+        }
+        i{
+            font-size: 3rem;
+            color: $color-primary;
+
+            &:hover{
+                color: #f19b62;
+            }
+        }
+    }
+    
+
+    &__list{
+        position: absolute;
+        right: 5.6rem;
+        top: 2rem;
+        padding: .9rem 1.5rem;
+        // display: flex;
+        flex-direction: column;
+        width: 30rem;
+        background-color: #ffffff;
+        box-shadow: .3rem .3rem .8rem rgba($color: #000000, $alpha: .2);
+        text-decoration: none;
+        list-style: none;     
+        display: none;   
+    }
+
+    &__arr{
+        position: absolute;
+        color: #ffffff;
+        font-size: 4rem;
+        right: -13px;
+        top: -5px;
+    }
+
+    &__item{
+        margin-left: -.3rem;
+        display: flex;
+        justify-content: space-between;
+
+        &-icon{
+            color: $color-primary;
+            flex: 20%;
+            cursor: pointer;
+            transition: all .2s;
+
+            &:hover{
+                color: rgba(226, 126, 122, 0.8)
+            }
+        }
+
+        &:not(:last-child){
+            margin-bottom: 1.5rem ;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba($color: #000000, $alpha: .2);
+        }
+    }
+
+    &__wrapper{
+        
+    }
+    
+    &__item--link{
+        &:link, &:visited{
+            text-decoration: none;
+        }
+        &:hover h4{
+            color: rgb(228, 155, 19);
+        }
+    }
+    
+
+    &__item-title{
+        color: $color-primary;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__item-content{
+        font-size: 1.4rem;
+        color: #555;
+        margin-bottom: 0;
+    }
+}
+

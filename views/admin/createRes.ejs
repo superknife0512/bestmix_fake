@@ -1,0 +1,159 @@
+
+<%- include('../../includes/header') %>
+    <div class="container">
+        <div class="btn-group">
+            <button class="btn btn-help btn-outline-info btn-sm" id="btn-news">News</button>
+            <button class="btn btn-help btn-outline-dark btn-sm" id="btn-prod">Product</button>
+        </div>
+        <br><br>
+        
+        <div id="post">
+                <h1><%= editMode ? 'Edit your post' : 'Create news post' %></h1>
+                <hr>
+                <!--  -->
+                <form action="<%= editMode ? '/admin/edit' : '/admin/create' %>" 
+                        method="POST" 
+                        enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="title">News title</label>
+                        <input type="text" 
+                                class="form-control" 
+                                name="title"
+                                placeholder="Enter news's name"
+                                value="<%= editMode ? newsEdit.title : '' %>">            
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Description</label>                        
+                        <textarea 
+                            class="form-control" 
+                            name="desc"  
+                            cols="30" 
+                            rows="10"><%= editMode ? newsEdit.desc : '' %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="images">Images</label>
+                        <input type="file" name="images" multiple>
+                    </div>
+                    <div class="form-group">
+                        <label for="newsType">News Type</label>
+                        <select name="newsType" id="newsType" class="form-control">
+                            <option value="company" <%= editMode && newsEdit.newsType === 'company' ? 'selected' : '' %>>company</option>
+                            <option value="hot" <%= editMode && newsEdit.newsType === 'hot' ? 'selected' : '' %>>hot</option>
+                            <option value="promotion" <%= editMode && newsEdit.newsType === 'promotion' ? 'selected' : '' %>>promotion</option>
+                        </select>
+                    </div>
+                    <% if(editMode) { %>
+                        <input type="hidden" value="<%= newsEdit._id %>" name="newsId">
+                    <% } %>
+                    <button type="submit" class="btn btn-warning form__btn"><%= editMode ? 'Edit Post' : 'Submit' %></button>
+                </form>
+        </div>
+
+        <div id="product">
+            <h1><%= editProdMode ? 'Edit product' : 'Create new product' %></h1>
+            <hr>
+            <form class="product" method="POST" action="<%= editProdMode ? '/admin/edit-product' : '/admin/create-product' %>" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" 
+                        class="form-control" 
+                        name="name" 
+                        placeholder="Enter product name"
+                        value="<%= editProdMode ? prodEdit.name : '' %>">
+                </div>
+                <div class="form-group">
+                    <label for="product-type">Product type</label>
+                    <select class="form-control" id="product-type" name="productType">
+                        <option value="concrete" <%= prodEdit.productType == 'concrete' ? 'selected' : '' %>>phụ gia bê tông- xi măng</option>
+                        <option value="shield" <%= prodEdit.productType == 'shield' ? 'selected' : '' %>>chống thấm và trám bít</option>
+                        <option value="floor" <%= prodEdit.productType == 'floor' ? 'selected' : '' %>>nền sàn và chất phủ bề mặt</option>
+                        <option value="bond" <%= prodEdit.productType == 'bond' ? 'selected' : '' %>>vữa rót - kết nối- sửa chữa - hoàn thiện</option>
+                        <option value="other" <%= prodEdit.productType == 'other' ? 'selected' : '' %>>sản phẩm cho các ngành sản xuất khác</option>
+                        <option value="progress" <%= prodEdit.productType == 'progress' ? 'selected' : '' %>>quy trình thi công</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="shortDes">Short description</label>
+                    <textarea class="form-control" 
+                                placeholder="Enter description" 
+                                rows="2" 
+                                name="shortDes"
+                                ><%= editProdMode ? prodEdit.shortDes : null %></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="application">Application</label>
+                    <textarea class="form-control" 
+                                placeholder="Enter application" 
+                                rows="2" 
+                                name="application">
+                                <%= editProdMode ? prodEdit.application : null %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Upload manual <i class="fas fa-file-pdf" style="color: #15c766;"></i></label>
+                    <input type="file" 
+                        placeholder="Enter product name" 
+                        name="manual"
+                        accept="application/pdf">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Upload images <i class="fas fa-image" style="color: #15c766;"></i></label>
+                    <input type="file" 
+                            placeholder="Enter product name" 
+                            name="imageProduct" 
+                            accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label for="desc">Full description</label>
+                    <textarea class="form-control" 
+                                placeholder="Enter desc" 
+                                rows="6" 
+                                name="desc">
+                                <%= editProdMode ? prodEdit.desc.join('$$') : null %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="pros"> Pros </label>
+                    <textarea class="form-control" 
+                                placeholder="Enter pros" 
+                                rows="6" 
+                                name="pros">
+                                <%= editProdMode ? prodEdit.pros.join('$$') : null %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="specities"> specities </label>
+                    <textarea class="form-control" 
+                                placeholder="Enter specities" 
+                                rows="6" 
+                                name="specities">
+                                <%= editProdMode ? prodEdit.specities.join('$$') : null %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="progress"> progress </label>
+                    <textarea class="form-control" 
+                                placeholder="Enter progress" 
+                                rows="6" 
+                                name="progress">
+                                <%= editProdMode ? prodEdit.progress.join('$$') : null %></textarea>
+                </div>
+                <% if(editProdMode) { %>
+
+                    <input type="hidden" name="productId" value="<%= prodEdit._id %>">
+
+                <% } %>
+
+                <button type="submit" class="btn btn-warning btn-lg">
+                    <%= editProdMode ? 'Edit Product' : 'Submit' %>
+                </button>
+            </form>
+        </div>
+        </div>
+
+    <br><br>
+    <script src="../../public/javascripts/switchProduct.js" defer></script>
+<%- include('../../includes/footer')  %>

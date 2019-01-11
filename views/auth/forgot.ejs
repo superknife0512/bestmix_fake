@@ -1,0 +1,21 @@
+<%- include('../../includes/header') %>
+<br>
+<hr>
+<div class="container">
+    <h3 class="sign-up">Reset your password</h3> 
+    <% if(error) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div> 
+    <% } %>
+    <form action="/admin/forgot" method="POST">
+        <div class="form-group">
+            <label for="email1">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+        </div>
+        <div class="btn-wrapper">
+            <button type="submit" class="btn btn-warning btn-lg">Reset</button>
+        </div>
+    </form>
+</div>
+<%- include('../../includes/footer') %>

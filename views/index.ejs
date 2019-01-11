@@ -1,0 +1,185 @@
+
+<%- include('../includes/header') %>
+
+  <section class="carousel">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="images/slide3.png" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="images/slide1.png" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="images/slide2.png" alt="Second slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+  </section>
+
+  <section class="about">
+    <div class="container about__wrapper">
+      <h2 class="about__heading">
+        Công ty cổ phần bestmix
+      </h2>  
+      <h5 class="about__des">Công ty cổ phần BESTMIX, tiền thân là Công ty cổ phần Siêu Cường, được thành lập theo giấy phép số: 684/GP-UP do UBND thành phố Hồ Chí Minh cấp ngày: 30/03/1999.</h5>
+    </div>
+
+    <div class="about__detail container">
+      <div class="about__video">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/C5Oi4AX_XIA" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="about__info">
+        <p class="about__des">Hệ thống sản phẩm BESTMIX được phân loại theo công dụng và tính năng kỹ thuật trong lĩnh vực xây dựng như:</p>
+        <ul class="about__list">
+          <li><a href="#">Phụ gia Bê tông - Xi măng</a></li>
+          <li><a href="#">Chống thấm & Trám bít</a></li>
+          <li><a href="#">Nền sàng và chất phủ bề mặt</a></li>
+          <li><a href="#">Vữa rót - Kết nối - Sửa chữa - Hoàn thiện</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+
+    <div class="system container">
+      <h1 class="system__heading"><a href="#">Hệ thống đại lý bestmix (click now)</a> </h1>
+      <div id="map"></div>
+    </div>
+
+    <button class="btn btn-warning btn-learn">Xem thêm</button>
+  </section>
+
+  <section class="do-what container">
+    <div class="do-what__info">
+      <h1 class="do-what__title">
+        Chúng tôi làm gì 
+      </h1>
+      <p>Công ty cổ phần BESTMIX, tiền thân là Công ty cổ phần Siêu Cường, được thành lập theo giấy phép số: 684/GP-UP do UBND thành phố Hồ Chí Minh cấp ngày: 30/03/1999.</p>
+    </div>
+    <div class="do-what__badges">
+      
+      <% data.forEach( badge => { %>
+        <div class="do-what__wrapper">
+          <div class="do-what__badge">
+            <i class="<%= badge.icon %> do-what__icon"></i>
+            <h4 class="do-what__title-small"><%= badge.title %></h4>
+            <p class="do-what__content"><%= badge.detail %></p>
+          </div>
+  
+          <img src="images/shadow.png" alt="shadow" class="do-what__shadow">
+        </div>
+
+      <% }) %>
+
+    </div>
+  </section>
+
+  <section class="construct container">
+    <h2 class="construct__title">Công trình</h2>
+    <div class="construct__wrap">
+      <div class="construct__switches">
+        <ul class="construct__list">
+          <li class="construct__list-item" onclick="switchDoing(this)" id="sw1">
+            Công trình đang thi công
+          </li>
+          <li class="construct__list-item" onclick="switchStanding(this)" id="sw2">
+            Dự án tiêu biểu
+          </li>
+          <li class="construct__list-item" onclick="switchChemistry(this)" id="sw3">
+            Cung cấp phụ gia hóa chất
+          </li>
+        </ul>
+      </div>
+      <div class="construct__gallery container">
+        <div class="construct__doing" id="doing">
+          <!-- for doing data -->
+          <% dataConstruct.doing.forEach(project => { %>
+
+            <div class="construct__doing-pro">
+              <a href="#">
+                <img src="<%= project.img %>" alt="project" class="construct__doing-img">
+                <h5 class="construct__doing-title"><%= project.title %></h5>
+              </a>
+            </div>
+
+          <% }) %>
+
+          <!-- for standard process -->
+        </div>
+        <div class="construct__doing" id="outStanding">
+
+          <% dataConstruct.outStanding.forEach(project => { %>
+  
+            <div class="construct__doing-pro">
+              <a href="#">
+                <img src="<%= project.img %>" alt="project" class="construct__doing-img">
+                <h5 class="construct__doing-title"><%= project.title %></h5>
+              </a>
+            </div>
+  
+          <% }) %>
+        </div>
+
+        <div class="construct__doing" id="chemistry">
+
+            <% dataConstruct.chemistry.forEach(project => { %>
+    
+              <div class="construct__doing-pro">
+                <a href="#">
+                  <img src="<%= project.img %>" alt="project" class="construct__doing-img">
+                  <h5 class="construct__doing-title"><%= project.title %></h5>
+                </a>
+              </div>
+    
+            <% }) %>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <br>
+  <br>
+  <section class="news">
+    <div class="container">
+        <div class="news__heading">
+            <h2 class="news__heading--title">Tin tức</h2>   
+        </div>
+        <hr>
+        <div class="news__section">
+
+            <% featureNews.forEach((each,i)=>{ %>
+    
+            <firgure class="news__card">
+                <img src="<%= each.imageUrls[0] %>" alt="<%= each.title %>>" class="news__card-img">
+                <p class="news__card-date"><%= each.time.toISOString().split('T')[0] %></p>
+                <h3 class="news__card-title"><%= each.title %></h3>
+                <p class="news__card-desc"><%= shortDesArr[i] %> …</p>
+                <a href="/news/<%= each.SEO %>.<%= each._id %>" class="news__card-learn">Xem thêm</a>
+            </firgure>
+    
+            <% }) %>
+    
+        </div>
+      <hr>
+    </div>
+  </section>
+
+<%- include('../includes/popup') %>
+
+
+<script src="javascripts/map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3Irwv0iQDBQnRQOgqkaHnM6-H9qvjxUU&callback=initMap"
+        async defer></script>
+<script src="javascripts/switch.js" defer></script>
+
+<%- include('../includes/footer') %>
