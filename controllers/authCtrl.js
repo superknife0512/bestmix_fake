@@ -12,12 +12,14 @@ const transporter = nodemailer.createTransport({
     }
 })
 
+const defaultEmail = process.env.DEFAULT_EMAIL;
+
 exports.getSignup =async (req, res, next)=>{
     const inviteCode = await bcrypt.hash('admin', 5);
 
     const mailOption = {
         from: 'admin@bestmix.com.vn',
-        to: 'dacphu.dut@gmail.com',
+        to: defaultEmail,
         subject: 'Invite Code',
         html: `<h1>Your invite code</h1>
                 <p>${inviteCode}</p>`

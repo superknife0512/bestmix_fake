@@ -1,0 +1,6 @@
+{
+    "env":{
+        "MONGO_CONNECTION_STRING":"mongodb+srv://superknife0512:Toan1234@node-app-oqduu.gcp.mongodb.net/Bestmix?retryWrites=true",
+        "DEFAULT_EMAIL":"dacphu.dut@gmail.com"
+    }
+}

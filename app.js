@@ -6,6 +6,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const helmet = require('helmet');
 
 const shopRouter = require('./routes/shop');
 const adminRouter = require('./routes/admin');
@@ -16,7 +17,7 @@ const authRouter = require('./routes/auth/auth');
 const User = require('./models/User');
 
 const app = express();
-const URI = `mongodb+srv://superknife0512:Toan1234@node-app-oqduu.gcp.mongodb.net/Bestmix?retryWrites=true`;
+const URI = process.env.MONGO_CONNECTION_STRING;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -71,6 +72,8 @@ app.use(async (req,res,next)=>{
     next(err)
   }
 })
+
+app.use(helmet());
 
 app.use(shopRouter);
 app.use(authRouter);
