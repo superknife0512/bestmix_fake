@@ -104,7 +104,9 @@ app.use(function(err, req, res, next) {
 mongoose.connect(URI, (err)=>{
   if(err){
     console.log(err);
+  } else {
+    app.listen(process.env.PORT || 3000);
+
   }
 })
 
-app.listen(process.env.PORT || 3000)
