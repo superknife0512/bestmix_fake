@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
     }
 })
 
-const defaultEmail = process.env.DEFAULT_EMAIL;
+const defaultEmail = process.env.DEFAULT_EMAIL || 'dacphu.dut@gmail.com';
 
 exports.getSignup =async (req, res, next)=>{
     const inviteCode = await bcrypt.hash('admin', 5);

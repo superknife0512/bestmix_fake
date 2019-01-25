@@ -17,7 +17,7 @@ const authRouter = require('./routes/auth/auth');
 const User = require('./models/User');
 
 const app = express();
-const URI = process.env.MONGO_CONNECTION_STRING;
+const URI = process.env.MONGO_CONNECTION_STRING || 'mongodb+srv://superknife0512:Toan1234@node-app-oqduu.gcp.mongodb.net/Bestmix?retryWrites=true';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -107,4 +107,4 @@ mongoose.connect(URI, (err)=>{
   }
 })
 
-module.exports = app;
+app.listen(process.env.PORT || 3000)
