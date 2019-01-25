@@ -3,43 +3,48 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
+const sgMail = require('@sendgrid/mail');
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth:{
-        user: 'Superknife0511@gmail.com',
-        pass: 'Toan1234',
-    }
-})
+// const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth:{
+//         user: 'Superknife0511@gmail.com',
+//         pass: 'Toan1234',
+//     }
+// })
 
-const defaultEmail = process.env.DEFAULT_EMAIL ;
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 
 exports.getSignup =async (req, res, next)=>{
-    const inviteCode = await bcrypt.hash('admin', 5);
+    try{
+        const inviteCode = await bcrypt.hash('admin', 5);
 
-    const mailOption = {
-        from: 'admin@bestmix.com.vn',
-        to: defaultEmail,
-        subject: 'Invite Code',
-        html: `<h1>Your invite code</h1>
-                <p>${inviteCode}</p>`
+        const msg = {
+            to: 'superknife0511@gmail.com',
+            from: 'bestmix@gmail.com',
+            subject: 'Invite Code',
+            text: 'Get this code and enter it into your invited code field',
+            html: `<strong>${inviteCode}</strong>`,
+          };
+          await sgMail.send(msg, false, (err,result)=>{
+              if(err){
+                  throw err;
+              } else {
+                  console.log('Done');
+              }
+          });
+    
+        res.render('auth/signup',{
+            title:'Sign up',
+            path:'/sign-up',
+            error: null,
+            email: null,
+            password: null,
+        })
+    } catch (err) {
+        next(err)
     }
-
-    transporter.sendMail(mailOption, (err, info)=>{
-        if(err){
-            throw err
-        } else {
-            console.log(info.response);
-        }
-    })
-
-    res.render('auth/signup',{
-        title:'Sign up',
-        path:'/sign-up',
-        error: null,
-        email: null,
-        password: null,
-    })
 
 }
 
@@ -165,6 +170,7 @@ exports.getForgot = (req,res,next)=>{
 exports.postForgot =async (req,res,next)=>{
     try{
         email = req.body.email;
+        console.log(email);
         const acc = await User.findOne({email: email});
         if(!acc){
             return renderFunc(res,'auth/forgot', 'Your account doesnt exist yet');
@@ -176,21 +182,25 @@ exports.postForgot =async (req,res,next)=>{
         acc.tokenExpire = tokenExpire;
         await acc.save();
 
-        const mailOption = {
-            from: 'admin@bestmix.com.vn',
+        const msg = {
             to: email,
-            subject: 'Reset password',
-            html: `<h2>Please click the link bellow to reset your password</h2><hr>
-            <a href="http://localhost:3000/admin/reset/${token}">Reset password</a>`
-        }
+            from: 'bestmix@gmail.com',
+            subject: 'Reset Password',
+            html:  `<h2>Please click the link bellow to reset your password</h2><hr>
+                    <a href="http://localhost:3000/admin/reset/${token}">Reset password</a>`
+          };
 
-        transporter.sendMail(mailOption, (err, info)=>{
-            if(err){
-                throw err
-            } else {
-                console.log(info.response);
-            }
-        })
+          await sgMail.send(msg, false, (err,result)=>{
+              if(err){
+                  throw err;
+              } else {
+                  console.log('Done');
+              }
+          });
+
+
+
+       
 
         res.redirect('/admin/login')
 
