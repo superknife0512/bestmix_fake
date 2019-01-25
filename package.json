@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "watch:sass": "node-sass public/sass/main.scss public/stylesheets/style.css --watch",
-    "nodemon": "nodemon ./bin/www",
+    "start:dev": "nodemon ./bin/www",
     "start": " node app.js"
   },
   "dependencies": {
