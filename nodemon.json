@@ -1,7 +1,6 @@
 {
     "env":{
         "MONGO_CONNECTION_STRING":"mongodb+srv://superknife0512:Toan1234@node-app-oqduu.gcp.mongodb.net/Bestmix?retryWrites=true",
-        "DEFAULT_EMAIL":"dacphu.dut@gmail.com",
-        "SENDGRID_API_KEY":"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"
+        "DEFAULT_EMAIL":"dacphu.dut@gmail.com"
     }
 }
